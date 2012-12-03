@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/bpmn20" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_CvYn4TypEeKKZ7wVdWruWw" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd" targetNamespace="http://www.omg.org/bpmn20">
-  <bpmn2:process id="testProcess" name="" isExecutable="true">
+  <bpmn2:process id="org.jbpm.process.release" name="Artifact Release Process" isExecutable="true">
     <bpmn2:startEvent id="_ABD1EF3E-B30E-49E8-92A6-354F097671BC" drools:bgcolor="#9acd32" drools:selectable="true" name="">
       <bpmn2:outgoing>_66466728-D937-4571-A91F-F56D7D76014E</bpmn2:outgoing>
     </bpmn2:startEvent>
