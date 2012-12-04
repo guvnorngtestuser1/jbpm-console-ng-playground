@@ -149,7 +149,7 @@
     </bpmn2:exclusiveGateway>
   </bpmn2:process>
   <bpmndi:BPMNDiagram id="_MadV3T34EeK4-Ic30qxaQA">
-    <bpmndi:BPMNPlane id="_MadV3j34EeK4-Ic30qxaQA" bpmnElement="testProcess">
+    <bpmndi:BPMNPlane id="_MadV3j34EeK4-Ic30qxaQA" bpmnElement="org.jbpm.release.process">
       <bpmndi:BPMNShape id="_MadV3z34EeK4-Ic30qxaQA" bpmnElement="_DEC27E5D-B7FA-43B0-BFDB-5308A13A9595">
         <dc:Bounds height="30.0" width="30.0" x="190.0" y="183.0"/>
       </bpmndi:BPMNShape>
