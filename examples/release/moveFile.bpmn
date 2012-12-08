@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.omg.org/bpmn20" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_ALh9IEFhEeK2M6_CYoSvYg" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd" targetNamespace="http://www.omg.org/bpmn20">
+  <bpmn2:itemDefinition id="_sourceItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_targetItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="_filesItem" structureRef="java.util.List"/>
+  <bpmn2:itemDefinition id="_errorsItem" structureRef="java.util.List"/>
+  <bpmn2:itemDefinition id="__613D77F8-7DAF-4814-A619-060B3870BBC2_sourceInputItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="__613D77F8-7DAF-4814-A619-060B3870BBC2_targetInputItem" structureRef="String"/>
+  <bpmn2:itemDefinition id="__613D77F8-7DAF-4814-A619-060B3870BBC2_filesInputItem" structureRef="java.util.List"/>
+  <bpmn2:itemDefinition id="__613D77F8-7DAF-4814-A619-060B3870BBC2_errorsOutputItem" structureRef="java.util.List"/>
+  <bpmn2:process id="MoveFileWorkItemHandlerTest" drools:packageName="org.droolsjbpm.services.wih.test" name="MoveFileWorkItemHandlerTest" isExecutable="true">
+    <bpmn2:property id="source" itemSubjectRef="_sourceItem"/>
+    <bpmn2:property id="target" itemSubjectRef="_targetItem"/>
+    <bpmn2:property id="files" itemSubjectRef="_filesItem"/>
+    <bpmn2:property id="errors" itemSubjectRef="_errorsItem"/>
+    <bpmn2:startEvent id="_BE81856F-9544-4690-877A-54536FFB7508" drools:bgcolor="#9acd32" drools:selectable="true" name="">
+      <bpmn2:outgoing>_4DD3E8C0-527A-4A3E-9942-BDFB2C7EC4ED</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:task id="_613D77F8-7DAF-4814-A619-060B3870BBC2" drools:selectable="true" drools:taskName="MoveFile" name="Move File">
+      <bpmn2:incoming>_4DD3E8C0-527A-4A3E-9942-BDFB2C7EC4ED</bpmn2:incoming>
+      <bpmn2:outgoing>_36F4D3D6-D3E0-4687-9A25-4C61402E3608</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="_ALh9IUFhEeK2M6_CYoSvYg">
+        <bpmn2:dataInput id="_613D77F8-7DAF-4814-A619-060B3870BBC2_TaskNameInput" name="TaskName"/>
+        <bpmn2:dataInput id="_613D77F8-7DAF-4814-A619-060B3870BBC2_sourceInput" drools:dtype="String" itemSubjectRef="__613D77F8-7DAF-4814-A619-060B3870BBC2_sourceInputItem" name="source"/>
+        <bpmn2:dataInput id="_613D77F8-7DAF-4814-A619-060B3870BBC2_targetInput" drools:dtype="String" itemSubjectRef="__613D77F8-7DAF-4814-A619-060B3870BBC2_targetInputItem" name="target"/>
+        <bpmn2:dataInput id="_613D77F8-7DAF-4814-A619-060B3870BBC2_filesInput" drools:dtype="java.util.List" itemSubjectRef="__613D77F8-7DAF-4814-A619-060B3870BBC2_filesInputItem" name="files"/>
+        <bpmn2:dataOutput id="_613D77F8-7DAF-4814-A619-060B3870BBC2_errorsOutput" drools:dtype="java.util.List" itemSubjectRef="__613D77F8-7DAF-4814-A619-060B3870BBC2_errorsOutputItem" name="errors"/>
+        <bpmn2:inputSet id="_ALh9IkFhEeK2M6_CYoSvYg">
+          <bpmn2:dataInputRefs>_613D77F8-7DAF-4814-A619-060B3870BBC2_sourceInput</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_613D77F8-7DAF-4814-A619-060B3870BBC2_targetInput</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_613D77F8-7DAF-4814-A619-060B3870BBC2_filesInput</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_613D77F8-7DAF-4814-A619-060B3870BBC2_TaskNameInput</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="_ALh9I0FhEeK2M6_CYoSvYg">
+          <bpmn2:dataOutputRefs>_613D77F8-7DAF-4814-A619-060B3870BBC2_errorsOutput</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="_ALh9JEFhEeK2M6_CYoSvYg">
+        <bpmn2:targetRef>_613D77F8-7DAF-4814-A619-060B3870BBC2_TaskNameInput</bpmn2:targetRef>
+        <bpmn2:assignment id="_ALh9JUFhEeK2M6_CYoSvYg">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_ALh9JkFhEeK2M6_CYoSvYg">MoveFile</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_ALh9J0FhEeK2M6_CYoSvYg">_613D77F8-7DAF-4814-A619-060B3870BBC2_TaskNameInput</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_ALh9KEFhEeK2M6_CYoSvYg">
+        <bpmn2:sourceRef>source</bpmn2:sourceRef>
+        <bpmn2:targetRef>_613D77F8-7DAF-4814-A619-060B3870BBC2_sourceInput</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_ALikMEFhEeK2M6_CYoSvYg">
+        <bpmn2:sourceRef>target</bpmn2:sourceRef>
+        <bpmn2:targetRef>_613D77F8-7DAF-4814-A619-060B3870BBC2_targetInput</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_ALikMUFhEeK2M6_CYoSvYg">
+        <bpmn2:sourceRef>files</bpmn2:sourceRef>
+        <bpmn2:targetRef>_613D77F8-7DAF-4814-A619-060B3870BBC2_filesInput</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="_ALikMkFhEeK2M6_CYoSvYg">
+        <bpmn2:sourceRef>_613D77F8-7DAF-4814-A619-060B3870BBC2_errorsOutput</bpmn2:sourceRef>
+        <bpmn2:targetRef>errors</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:task>
+    <bpmn2:sequenceFlow id="_4DD3E8C0-527A-4A3E-9942-BDFB2C7EC4ED" drools:bgcolor="#000000" drools:selectable="true" sourceRef="_BE81856F-9544-4690-877A-54536FFB7508" targetRef="_613D77F8-7DAF-4814-A619-060B3870BBC2"/>
+    <bpmn2:sequenceFlow id="_36F4D3D6-D3E0-4687-9A25-4C61402E3608" drools:bgcolor="#000000" drools:selectable="true" sourceRef="_613D77F8-7DAF-4814-A619-060B3870BBC2" targetRef="_8260A10E-0463-4F1A-B749-BA9ED34101F5"/>
+    <bpmn2:endEvent id="_8260A10E-0463-4F1A-B749-BA9ED34101F5" drools:bgcolor="#ff6347" drools:selectable="true" name="">
+      <bpmn2:incoming>_36F4D3D6-D3E0-4687-9A25-4C61402E3608</bpmn2:incoming>
+      <bpmn2:terminateEventDefinition id="_ALikM0FhEeK2M6_CYoSvYg"/>
+    </bpmn2:endEvent>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="_ALikNEFhEeK2M6_CYoSvYg">
+    <bpmndi:BPMNPlane id="_ALikNUFhEeK2M6_CYoSvYg" bpmnElement="MoveFileWorkItemHandlerTest">
+      <bpmndi:BPMNShape id="_ALikNkFhEeK2M6_CYoSvYg" bpmnElement="_BE81856F-9544-4690-877A-54536FFB7508">
+        <dc:Bounds height="30.0" width="30.0" x="374.0" y="281.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_ALikN0FhEeK2M6_CYoSvYg" bpmnElement="_613D77F8-7DAF-4814-A619-060B3870BBC2">
+        <dc:Bounds height="80.0" width="100.0" x="449.0" y="256.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="_ALikOEFhEeK2M6_CYoSvYg" bpmnElement="_4DD3E8C0-527A-4A3E-9942-BDFB2C7EC4ED">
+        <di:waypoint xsi:type="dc:Point" x="389.0" y="296.0"/>
+        <di:waypoint xsi:type="dc:Point" x="499.0" y="296.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_ALikOUFhEeK2M6_CYoSvYg" bpmnElement="_36F4D3D6-D3E0-4687-9A25-4C61402E3608">
+        <di:waypoint xsi:type="dc:Point" x="499.0" y="296.0"/>
+        <di:waypoint xsi:type="dc:Point" x="608.0" y="296.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_ALikOkFhEeK2M6_CYoSvYg" bpmnElement="_8260A10E-0463-4F1A-B749-BA9ED34101F5">
+        <dc:Bounds height="28.0" width="28.0" x="594.0" y="282.0"/>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
+
