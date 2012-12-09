@@ -11,6 +11,11 @@
                             <div class="input-button">
                                 <input type="text" name="release_name" value=""/>
                             </div>
+                            <label>Release Path</label>
+                            <div class="input-button">
+                                <input type="text" name="release_path" value=""/>
+                            </div>
+
                         </div>
                    
                <div class="form-row submit clearfix">
