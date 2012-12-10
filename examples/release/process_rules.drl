@@ -7,6 +7,13 @@ import org.kie.runtime.process.ProcessInstance;
 import org.jbpm.workflow.instance.impl.WorkflowProcessInstanceImpl;
 import org.kie.event.process.*;
 
+declare ProcessStartedEvent
+	@role(event)
+end
+declare ProcessCompletedEvent
+	@role(event)
+end
+
 query getProcessInstances()
     $w: WorkflowProcessInstanceImpl( )
 end
