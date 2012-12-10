@@ -76,7 +76,7 @@
       <bpmn2:dataInputAssociation id="_KLOEBEMPEeK9F524-oNjJQ">
         <bpmn2:targetRef>_DC02FDAB-8DEF-4C41-9C63-8A35B4FE85FB_TaskNameInput</bpmn2:targetRef>
         <bpmn2:assignment id="_KLOEBUMPEeK9F524-oNjJQ">
-          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_KLOEBkMPEeK9F524-oNjJQ">SelectFilestoStage</bpmn2:from>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_KLOEBkMPEeK9F524-oNjJQ">Select Files to Stage</bpmn2:from>
           <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_KLOEB0MPEeK9F524-oNjJQ">_DC02FDAB-8DEF-4C41-9C63-8A35B4FE85FB_TaskNameInput</bpmn2:to>
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
