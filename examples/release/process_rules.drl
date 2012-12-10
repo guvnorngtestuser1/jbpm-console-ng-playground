@@ -5,9 +5,25 @@ import java.util.Map;
 import java.util.HashMap;
 import org.kie.runtime.process.ProcessInstance;
 import org.jbpm.workflow.instance.impl.WorkflowProcessInstanceImpl;
+import org.kie.event.process.*;
+
+declare ProcessStartedEvent
+	@role(event)
+end
+declare ProcessCompletedEvent
+	@role(event)
+end
 
 query getProcessInstances()
     $w: WorkflowProcessInstanceImpl( )
 end
 
+rule "Ongoing process for more than X minutes"
+ when
+	$w: WorkflowProcessInstanceImpl( )
+	$pse: ProcessStartedEvent(processInstance == $w) from entry-point "process-events"
+        not(ProcessCompletedEvent(processInstance == $w,  this after[0s, 15s] $pse ) from entry-point "process-events") 
+ then
+	System.out.println(" The Process Instance (id="+$w.getId()+") is taking too long! ");
+end
 
