@@ -74,7 +74,7 @@
       <bpmn2:dataInputAssociation id="_9Q2Z80L7EeK9F524-oNjJQ">
         <bpmn2:targetRef>_51B627B5-7F7C-4A97-8E99-C8497E91E14A_TaskNameInput</bpmn2:targetRef>
         <bpmn2:assignment id="_9Q2Z9EL7EeK9F524-oNjJQ">
-          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_9Q2Z9UL7EeK9F524-oNjJQ">SelectFiles to Stage</bpmn2:from>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_9Q2Z9UL7EeK9F524-oNjJQ">Select Files to Stage</bpmn2:from>
           <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_9Q2Z9kL7EeK9F524-oNjJQ">_51B627B5-7F7C-4A97-8E99-C8497E91E14A_TaskNameInput</bpmn2:to>
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
@@ -405,7 +405,7 @@
       <bpmn2:dataInputAssociation id="_9Q4PMkL7EeK9F524-oNjJQ">
         <bpmn2:targetRef>_CB7D4485-8C44-4429-A0C5-604840E059FC_TaskNameInput</bpmn2:targetRef>
         <bpmn2:assignment id="_9Q4PM0L7EeK9F524-oNjJQ">
-          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_9Q4PNEL7EeK9F524-oNjJQ">PublishReleasedArtifacts</bpmn2:from>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_9Q4PNEL7EeK9F524-oNjJQ">Publish Released Artifacts</bpmn2:from>
           <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_9Q4PNUL7EeK9F524-oNjJQ">_CB7D4485-8C44-4429-A0C5-604840E059FC_TaskNameInput</bpmn2:to>
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
