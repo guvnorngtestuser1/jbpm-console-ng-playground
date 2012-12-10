@@ -22,8 +22,8 @@ rule "Ongoing process for more than X minutes"
  when
 	$w: WorkflowProcessInstanceImpl( )
 	$pse: ProcessStartedEvent(processInstance == $w) from entry-point "process-events"
-        not(ProcessCompletedEvent(processInstance == $w after[15s] $pse ) from entry-point "process-events") 
+        not(ProcessCompletedEvent(processInstance == $w,  this after[15s] $pse ) from entry-point "process-events") 
  then
-	System.out.println(" The Process Instance is taking too long! "+$w.getId());
+	System.out.println(" The Process Instance (id="+$w.getId()+") is taking too long! ");
 end
 
