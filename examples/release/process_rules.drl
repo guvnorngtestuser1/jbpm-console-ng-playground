@@ -25,6 +25,10 @@ rule "Ongoing process for more than X minutes"
         not(ProcessCompletedEvent(processInstance == $w,  this after[0s, 15s] $pse ) from entry-point "process-events") 
  then
 	System.out.println(" The Process Instance (id="+$w.getId()+") is taking too long! ");
-	throw new Exception();
+	try{
+		throw new Exception();
+	} catch(Exception e){
+	        e.printStackTrace();
+        }
 end
 
