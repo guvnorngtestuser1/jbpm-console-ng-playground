@@ -20,7 +20,7 @@ query getProcessInstances()
     $w: WorkflowProcessInstanceImpl( )
 end
 
-rule "Ongoing process for more than X minutes"
+rule "Ongoing process for more than 15 seconds"
  when
 	$w: WorkflowProcessInstanceImpl( )
 	$pse: ProcessStartedEvent(processInstance == $w) from entry-point "process-events"
@@ -30,3 +30,24 @@ rule "Ongoing process for more than X minutes"
 	rulesFired.add("The Process Instance (id="+$w.getId()+") is taking too long!");
 end
 
+
+rule "Warn Process Instance not finished after 35 seconds"
+ when
+	$w: WorkflowProcessInstanceImpl( )
+	$pse: ProcessStartedEvent(processInstance == $w) from entry-point "process-events"
+        not(ProcessCompletedEvent(processInstance == $w,  this after[0s, 35s] $pse ) from entry-point "process-events") 
+ then
+	System.out.println("WARN: The Process Instance (id="+$w.getId()+") will be aborted in 2 minutes!");
+	rulesFired.add("WARN: The Process Instance (id="+$w.getId()+") will be aborted in 2 minutes!");
+end
+
+rule "Warn Process Instance not finished after 2 seconds"
+ when
+	$w: WorkflowProcessInstanceImpl( )
+	$pse: ProcessStartedEvent(processInstance == $w) from entry-point "process-events"
+        not(ProcessCompletedEvent(processInstance == $w,  this after[0s, 2m] $pse ) from entry-point "process-events") 
+ then
+	System.out.println("SEVERE: The Process Instance (id="+$w.getId()+") is being aborted now due inactivity!");
+	rulesFired.add("SEVERE: The Process Instance (id="+$w.getId()+") is being aborted now due inactivity!");
+	kcontext.getKnowledgeRuntime().abortProcessInstance($w.getId());
+end
