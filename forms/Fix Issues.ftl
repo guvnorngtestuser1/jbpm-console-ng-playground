@@ -13,7 +13,9 @@
             </div>
             <div class="form-row clearfix">
                 <label>Fixed Files</label>
+                <#if task.taskData.status = 'InProgress'>
                 <input type="text" name="out_fixed_file_list" id="out_fixed_file_list" value="${inputs['in_files']}"/>
+                </#if>
             </div>
                 
 

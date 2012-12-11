@@ -9,15 +9,21 @@
             </div>
             <div class="form-row clearfix">
                 <label>Confirmed Files</label>
+                <#if task.taskData.status = 'InProgress'>
                 <input type="text" name="out_selected_files" id="out_selected_files" value="${inputs['in_files']}"/>
+                </#if>
             </div>
             <div class="form-row clearfix">
                 <label>Confirm</label>
+                <#if task.taskData.status = 'InProgress'>
                 <input type="checkbox" name="out_confirmed" id="out_confirmed"/>
+                </#if>
             </div>
             <div class="form-row clearfix">
                 <label>Due Date</label>
+                <#if task.taskData.status = 'InProgress'>
                 <input type="date" name="out_dueDate" id="out_dueDate"/>
+                </#if>
             </div>
 
                 

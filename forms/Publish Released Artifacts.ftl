@@ -13,7 +13,9 @@
             </div>
             <div class="form-row clearfix">
                 <label>Notify</label>
-                <input type="text" name="out_users_list" id="out_users_list" value="${inputs['out_users_list']}"/>
+                <#if task.taskData.status = 'InProgress'>
+                <input type="text" name="out_users_list" id="out_users_list" value=""/>
+                </#if>
             </div>
                 
 
