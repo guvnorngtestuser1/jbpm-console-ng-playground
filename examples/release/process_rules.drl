@@ -16,6 +16,10 @@ declare ProcessCompletedEvent
 	@role(event)
 end
 
+declare ProcessNodeTriggeredEvent
+	@role(event)
+end
+
 query getProcessInstances()
     $w: WorkflowProcessInstanceImpl( )
 end
@@ -53,4 +57,13 @@ rule "Warn Two Process Instance doing a Release on the same Directory"
         kcontext.getKnowledgeRuntime().abortProcessInstance($w2.getId());
 end
 
+rule "More than two Fix Issues for the same Release Process Instance"
+  when
+	$w1: WorkflowProcessInstanceImpl($id: id)
+	Number( intValue > 1) from accumulate($e: ProcessNodeTriggeredEvent(processInstance.id == $id, nodeInstance.nodeName == "Fix Issues") from entry-point "process-events", count($e))
+
+  then
+	System.out.println("WARN: The Process Instance (id="+$w1.getId()+") has being rejected at least 2 times");
+	rulesFired.add("WARN: The Process Instance (id="+$w1.getId()+") has being rejected at least 2 times");
+end
 
