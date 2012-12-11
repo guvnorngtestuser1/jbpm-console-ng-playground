@@ -81,7 +81,7 @@ rule "Trigger Test is taking too much time to run the tests - Create ad - hoc ta
   when
 	$w1: WorkflowProcessInstanceImpl($id: id)
 	$onEntry: ProcessNodeTriggeredEvent(processInstance.id == $id, nodeInstance.nodeName == "Trigger Tests") from entry-point "process-events"
-	$onExit: ProcessNodeLeftEvent(this after[0s, 10s] $onEntry, processInstance.id == $id, nodeInstance.nodeName == "Trigger Tests") from entry-point "process-events"
+	$onExit: ProcessNodeLeftEvent(this after[10s] $onEntry, processInstance.id == $id, nodeInstance.nodeName == "Trigger Tests") from entry-point "process-events"
   then
         System.out.println("WARN: Trigger Tests activity from process id="+$w1.getId()+" is took too much time! an ad-hoc task was created to improve the performance of those tests");
 	rulesFired.add("WARN: Trigger Tests activity from process id="+$w1.getId()+" is took too much time! an ad-hoc task was created to improve the performance of those tests");
