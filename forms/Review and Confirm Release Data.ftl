@@ -4,15 +4,27 @@
             <input type="hidden" name="taskId" value="${task.id}"/>
 
             <div class="form-row clearfix">
-                <label>Release</label>
+                <label>Files</label>
                 <div class="input-button">
-                    <input type="text" disabled="true" name="release_name" value="${inputs['release_name']}" />
+                    <input type="text" disabled="true" name="release_name" value="${inputs['in_files']}" />
                 </div>
             </div>
             <div class="form-row clearfix">
                 <label>Files</label>
                 <div class="input-button">
-                    <input type="text" name="files_output" id="files_output">
+                    <input type="text" name="out_selected_files" id="out_selected_files" value="${inputs['in_files']}">
+                </div>
+            </div>
+            <div class="form-row clearfix">
+                <label>Confirm</label>
+                <div class="input-button">
+                    <input type="checkbox" name="out_confirmed" id="out_confirmed">
+                </div>
+            </div>
+            <div class="form-row clearfix">
+                <label>Due Date</label>
+                <div class="input-button">
+                    <input type="date" name="out_dueDate" id="out_dueDate">
                 </div>
             </div>
 
