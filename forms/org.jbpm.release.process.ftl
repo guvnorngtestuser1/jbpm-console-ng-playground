@@ -8,14 +8,11 @@
             
                          <div class="form-row clearfix">
                             <label>Release Name</label>
-                            <div class="input-button">
-                                <input type="text" name="release_name" id="release_name" value=""/>
-                            </div>
+                            <input type="text" name="release_name" id="release_name" value=""/>
+                         </div>
+                         <div class="form-row clearfix">
                             <label>Release Path</label>
-                            <div class="input-button">
-                                <input type="text" name="release_path" value=""/>
-                            </div>
-                            
+                            <input type="text" name="release_path" value=""/>
                         </div>
                    
                <div class="form-row submit clearfix">
