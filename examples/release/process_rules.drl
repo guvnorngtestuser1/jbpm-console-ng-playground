@@ -11,6 +11,7 @@ import org.jbpm.task.impl.factories.TaskFactory;
 import java.io.StringReader;
 import org.jbpm.task.Task;
 import org.droolsjbpm.services.api.RulesNotificationService;
+import org.kie.runtime.StatefulKnowledgeSession;
 
 global RulesNotificationService rulesNotificationService;
 
