@@ -41,13 +41,14 @@ rule "Warn Process Instance not finished after 35 seconds"
 	rulesFired.add("WARN: The Process Instance (id="+$w.getId()+") will be aborted in 2 minutes!");
 end
 
-rule "Warn Process Instance not finished after 2 seconds"
+
+rule "Warn Two Process Instance doing a Release on the same Directory"
  when
-	$w: WorkflowProcessInstanceImpl( )
-	$pse: ProcessStartedEvent(processInstance == $w) from entry-point "process-events"
-        not(ProcessCompletedEvent(processInstance == $w,  this after[0s, 2m] $pse ) from entry-point "process-events") 
+	$w1: WorkflowProcessInstanceImpl($releasePath1: variables['release_path'] )
+	$w2: WorkflowProcessInstanceImpl(variables['release_path'] == $releasePath1)
  then
-	System.out.println("SEVERE: The Process Instance (id="+$w.getId()+") is being aborted now due inactivity!");
-	rulesFired.add("SEVERE: The Process Instance (id="+$w.getId()+") is being aborted now due inactivity!");
-	kcontext.getKnowledgeRuntime().abortProcessInstance($w.getId());
+	System.out.println("WARN: The Process Instance (id="+$w2.getId()+") is using the same Release Path than "+$w1.getId());
+	rulesFired.add("WARN: The Process Instance (id="+$w2.getId()+") is using the same Release Path than "+$w1.getId()+" -> "+$releasePath1);
 end
+
+
