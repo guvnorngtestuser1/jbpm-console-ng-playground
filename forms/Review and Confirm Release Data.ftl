@@ -9,15 +9,15 @@
             </div>
             <div class="form-row clearfix">
                 <label>Confirmed Files</label>
-                <input type="text" name="out_selected_files" id="out_selected_files" value="${inputs['in_files']}">
+                <input type="text" name="out_selected_files" id="out_selected_files" value="${inputs['in_files']}"/>
             </div>
             <div class="form-row clearfix">
                 <label>Confirm</label>
-                <input type="checkbox" name="out_confirmed" id="out_confirmed">
+                <input type="checkbox" name="out_confirmed" id="out_confirmed"/>
             </div>
             <div class="form-row clearfix">
                 <label>Due Date</label>
-                <input type="date" name="out_dueDate" id="out_dueDate">
+                <input type="date" name="out_dueDate" id="out_dueDate"/>
             </div>
 
                 

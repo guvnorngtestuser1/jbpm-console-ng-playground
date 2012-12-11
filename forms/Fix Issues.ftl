@@ -4,14 +4,17 @@
             <input type="hidden" name="taskId" value="${task.id}"/>
 
             <div class="form-row clearfix">
-                <label>Release</label>
-                <input type="text" disabled="true" name="release_name" value="${inputs['release_name']}" />
+                <label>Report</label>
+                <textarea readonly="true" name="in_test_report">${inputs['in_test_report']}</textarea>
             </div>
             <div class="form-row clearfix">
-                <label>Files</label>
-                <input type="text" name="files_output" id="files_output"/>
+                <label>Selected Files</label>
+                <input type="text" disabled="true" name="in_files" id="in_files" value="${inputs['in_files']}"/>
             </div>
-
+            <div class="form-row clearfix">
+                <label>Fixed Files</label>
+                <input type="text" name="out_fixed_file_list" id="out_fixed_file_list" value="${inputs['in_files']}"/>
+            </div>
                 
 
                  <div class="form-row submit clearfix">
