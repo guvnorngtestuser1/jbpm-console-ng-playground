@@ -10,8 +10,9 @@ import org.jbpm.task.api.TaskServiceEntryPoint;
 import org.jbpm.task.impl.factories.TaskFactory;
 import java.io.StringReader;
 import org.jbpm.task.Task;
+import org.droolsjbpm.services.api.RulesNotificationService;
 
-global java.util.List rulesFired;
+global RulesNotificationService rulesNotificationService;
 
 global TaskServiceEntryPoint taskService;
 
@@ -41,7 +42,7 @@ rule "Ongoing process for more than 15 seconds"
         not(ProcessCompletedEvent(processInstance == $w,  this after[0s, 15s] $pse ) from entry-point "process-events") 
  then
 	System.out.println("The Process Instance (id="+$w.getId()+") is taking too long!");
-	rulesFired.add("The Process Instance (id="+$w.getId()+") is taking too long!");
+	rulesNotificationService.insertNotification("The Process Instance (id="+$w.getId()+") is taking too long!");
 end
 
 
@@ -52,7 +53,7 @@ rule "Warn Process Instance not finished after 35 seconds"
         not(ProcessCompletedEvent(processInstance == $w,  this after[0s, 35s] $pse ) from entry-point "process-events") 
  then
 	System.out.println("WARN: The Process Instance (id="+$w.getId()+") will be aborted in 2 minutes!");
-	rulesFired.add("WARN: The Process Instance (id="+$w.getId()+") will be aborted in 2 minutes!");
+	rulesNotificationService.insertNotification("WARN: The Process Instance (id="+$w.getId()+") will be aborted in 2 minutes!");
 end
 
 
@@ -62,8 +63,8 @@ rule "Warn Two Process Instance doing a Release on the same Directory"
 	$w2: WorkflowProcessInstanceImpl( id > $w1.id  , variables['release_path'] == $releasePath1)
  then
 	System.out.println("WARN: The Process Instance (id="+$w2.getId()+") is using the same Release Path than "+$w1.getId() +" -> "+$releasePath1);
-	rulesFired.add("WARN: The Process Instance (id="+$w2.getId()+") is using the same Release Path than "+$w1.getId()+" -> "+$releasePath1);
-        System.out.println("SEVERE: Aborting the process: "+$w2.getId());	
+	rulesNotificationService.insertNotification("WARN: The Process Instance (id="+$w2.getId()+") is using the same Release Path than "+$w1.getId()+" -> "+$releasePath1);
+	rulesNotificationService.insertNotification("SEVERE: Aborting the process: "+$w2.getId());	
         kcontext.getKnowledgeRuntime().abortProcessInstance($w2.getId());
 end
 
@@ -74,7 +75,7 @@ rule "More than two Fix Issues for the same Release Process Instance"
 
   then
 	System.out.println("WARN: The Process Instance (id="+$w1.getId()+") has being rejected at least 2 times");
-	rulesFired.add("WARN: The Process Instance (id="+$w1.getId()+") has being rejected at least 2 times");
+	rulesNotificationService.insertNotification("WARN: The Process Instance (id="+$w1.getId()+") has being rejected at least 2 times");
 end
 
 rule "Trigger Test is taking too much time to run the tests - Create ad - hoc task"
@@ -83,8 +84,8 @@ rule "Trigger Test is taking too much time to run the tests - Create ad - hoc ta
 	$onEntry: ProcessNodeTriggeredEvent(processInstance.id == $id, nodeInstance.nodeName == "Trigger Tests") from entry-point "process-events"
 	$onExit: ProcessNodeLeftEvent(this after[10s] $onEntry, processInstance.id == $id, nodeInstance.nodeName == "Trigger Tests") from entry-point "process-events"
   then
-        System.out.println("WARN: Trigger Tests activity from process id="+$w1.getId()+" is took too much time! an ad-hoc task was created to improve the performance of those tests");
-	rulesFired.add("WARN: Trigger Tests activity from process id="+$w1.getId()+" is took too much time! an ad-hoc task was created to improve the performance of those tests");
+	rulesNotificationService.insertNotification("WARN: Trigger Tests activity from process id="+$w1.getId()+" is took too much time! an ad-hoc task was created to improve the performance of those tests");
+	rulesNotificationService.insertNotification("WARN: Trigger Tests activity from process id="+$w1.getId()+" is took too much time! an ad-hoc task was created to improve the performance of those tests");
 	String str = "(with (new Task()) { priority = 55, taskData = (with( new TaskData()) { } ), ";
         str += "peopleAssignments = (with ( new PeopleAssignments() ) { potentialOwners = [new Group('Release Manager')  ], }),";
         str += "names = [ new I18NText( 'en-UK', 'Improve Trigger Test Performance')] })";
