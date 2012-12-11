@@ -73,7 +73,7 @@ rule "More than two Fix Issues for the same Release Process Instance"
 	rulesFired.add("WARN: The Process Instance (id="+$w1.getId()+") has being rejected at least 2 times");
 end
 
-rule "More than two Fix Issues for the same Release Process Instance"
+rule "Trigger Test is taking too much time to run the tests - Create ad - hoc task"
   when
 	$w1: WorkflowProcessInstanceImpl($id: id)
 	$onEntry: ProcessNodeTriggeredEvent(processInstance.id == $id, nodeInstance.nodeName == "Trigger Tests") from entry-point "process-events"
