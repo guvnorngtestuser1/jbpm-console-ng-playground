@@ -7,9 +7,12 @@
                 <label>Release</label>
                 <input type="text" disabled="true" name="release_name" value="${inputs['release_name']}" />
             </div>
+
             <div class="form-row clearfix">
                 <label>Files</label>
-                <input type="text" name="files_output" id="files_output"/>
+                <#if task.taskData.status = 'InProgress'>
+                    <input type="text" name="files_output" id="files_output"/>
+                </#if>
             </div>
 
                 
