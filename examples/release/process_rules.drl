@@ -26,6 +26,10 @@ declare ProcessNodeTriggeredEvent
 	@role(event)
 end
 
+declare ProcessNodeLeftEvent
+	@role(event)
+end
+
 query getProcessInstances()
     $w: WorkflowProcessInstanceImpl( )
 end
