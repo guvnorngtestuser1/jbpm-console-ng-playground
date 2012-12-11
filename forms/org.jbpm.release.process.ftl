@@ -1,7 +1,7 @@
 
         <script type="text/javascript">
 
-            function validateAndSubmit(){
+            $wnd.validateAndSubmit = function(){
                 
                 var release_path = document.getElementById("release_path");
                 var release_name = document.getElementById("release_name");
