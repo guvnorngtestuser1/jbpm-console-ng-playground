@@ -5,17 +5,17 @@
 
             <div class="form-row clearfix">
                 <label>Release</label>
-                <div class="input-button">
+                
                   <input type="text" disabled="true" name="release_name" value="${inputs['release_name']}" />
-                </div>
+                
             </div>
 
             <div class="form-row clearfix">
                 <label>Files</label>
                 <#if task.taskData.status = 'InProgress'>
-		  <div class="input-button">
+		  
                     <input type="text" name="files_output" id="files_output" value=""/>
-                  </div>
+                  
                 </#if>
             </div>
 

@@ -13,9 +13,9 @@
                    
                          <div class="form-row clearfix">
                             <label>${key}</label>
-                            <div class="input-button">
+                            
                                 <input type="text" name="${key}" value=""/>
-                            </div>
+                            
                         </div>
                    
                 </#list>
