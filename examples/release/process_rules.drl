@@ -40,21 +40,10 @@ rule "Ongoing process for more than 15 seconds"
  when
 	$w: WorkflowProcessInstanceImpl( )
 	$pse: ProcessStartedEvent(processInstance == $w) from entry-point "process-events"
-        not(ProcessCompletedEvent(processInstance == $w,  this after[0s, 15s] $pse ) from entry-point "process-events") 
+        not(ProcessCompletedEvent(processInstance == $w,  this after[0s, 2m] $pse ) from entry-point "process-events") 
  then
 	System.out.println("The Process Instance (id="+$w.getId()+") is taking too long!");
 	rulesNotificationService.insertNotification(((StatefulKnowledgeSession)kcontext.getKieRuntime()).getId(), "The Process Instance (id="+$w.getId()+") is taking too long!");
-end
-
-
-rule "Warn Process Instance not finished after 35 seconds"
- when
-	$w: WorkflowProcessInstanceImpl( )
-	$pse: ProcessStartedEvent(processInstance == $w) from entry-point "process-events"
-        not(ProcessCompletedEvent(processInstance == $w,  this after[0s, 35s] $pse ) from entry-point "process-events") 
- then
-	System.out.println("WARN: The Process Instance (id="+$w.getId()+") will be aborted in 2 minutes!");
-	rulesNotificationService.insertNotification(((StatefulKnowledgeSession) kcontext.getKieRuntime()).getId(),"WARN: The Process Instance (id="+$w.getId()+") will be aborted in 2 minutes!");
 end
 
 
@@ -79,19 +68,27 @@ rule "More than two Fix Issues for the same Release Process Instance"
 	rulesNotificationService.insertNotification(((StatefulKnowledgeSession) kcontext.getKieRuntime()).getId(),"WARN: The Process Instance (id="+$w1.getId()+") has being rejected at least 2 times");
 end
 
+rule "Fix Issues Task pending for more than 30 seconds"
+  when
+	$w1: WorkflowProcessInstanceImpl($id: id)
+	$onEntry: ProcessNodeTriggeredEvent(processInstance.id == $id, nodeInstance.nodeName == "Fix Issues") from entry-point "process-events"
+	$onExit: ProcessNodeLeftEvent(this after[30s] $onEntry, processInstance.id == $id, nodeInstance.nodeName == "Fix Issues") from entry-point "process-events"
+  then
+	rulesNotificationService.insertNotification(((StatefulKnowledgeSession) kcontext.getKieRuntime()).getId(),"WARN: There is a Pending Fix Issues Task for process ("+$id+") for more than 30 seconds now");
+end
+
+
 rule "Trigger Test is taking too much time to run the tests - Create ad - hoc task"
   when
 	$w1: WorkflowProcessInstanceImpl($id: id)
-	$onEntry: ProcessNodeTriggeredEvent(processInstance.id == $id, nodeInstance.nodeName == "Trigger Tests") from entry-point "process-events"
-	$onExit: ProcessNodeLeftEvent(this after[10s] $onEntry, processInstance.id == $id, nodeInstance.nodeName == "Trigger Tests") from entry-point "process-events"
+	$onEntry: ProcessNodeTriggeredEvent(processInstance.id == $id, $nid: nodeInstance.id,  nodeInstance.nodeName == "Trigger Tests") from entry-point "process-events"
+	$onExit: ProcessNodeLeftEvent(this after[10s] $onEntry, processInstance.id == $id, nodeInstance.id == $nid, nodeInstance.nodeName == "Trigger Tests") from entry-point "process-events"
   then
-	rulesNotificationService.insertNotification(((StatefulKnowledgeSession) kcontext.getKieRuntime()).getId(),"WARN: Trigger Tests activity from process id="+$w1.getId()+" is took too much time! an ad-hoc task was created to improve the performance of those tests");
 	rulesNotificationService.insertNotification(((StatefulKnowledgeSession) kcontext.getKieRuntime()).getId(),"WARN: Trigger Tests activity from process id="+$w1.getId()+" is took too much time! an ad-hoc task was created to improve the performance of those tests");
 	String str = "(with (new Task()) { priority = 55, taskData = (with( new TaskData()) { } ), ";
         str += "peopleAssignments = (with ( new PeopleAssignments() ) { potentialOwners = [new Group('Release Manager')  ], }),";
         str += "names = [ new I18NText( 'en-UK', 'Improve Trigger Test Performance')] })";
 	Task task = TaskFactory.evalTask(new StringReader(str));
-
         taskService.addTask(task, new HashMap<String, Object>());
 	retract($onEntry);
 	retract($onExit);
