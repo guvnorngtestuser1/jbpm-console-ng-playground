@@ -3,9 +3,6 @@
             
             <input type="hidden" name="processId" value="${process.id}"/>
 
-                    <h2>Release Process</h2><br/>
-
-            
                          <div class="form-row clearfix">
                             <label>Release Name</label>
                             <input type="text" name="release_name" id="release_name" value=""/>

@@ -42,7 +42,7 @@ rule "Ongoing process for more than 15 seconds"
 	$pse: ProcessStartedEvent(processInstance == $w) from entry-point "process-events"
         not(ProcessCompletedEvent(processInstance == $w,  this after[0s, 2m] $pse ) from entry-point "process-events") 
  then
-	System.out.println("The Process Instance (id="+$w.getId()+") is taking too long!");
+	
 	rulesNotificationService.insertNotification(((StatefulKnowledgeSession)kcontext.getKieRuntime()).getId(), "The Process Instance (id="+$w.getId()+") is taking too long!");
 end
 
@@ -52,9 +52,9 @@ rule "Warn Two Process Instance doing a Release on the same Directory"
 	$w1: WorkflowProcessInstanceImpl($releasePath1: variables['release_path'] )
 	$w2: WorkflowProcessInstanceImpl( id > $w1.id  , variables['release_path'] == $releasePath1)
  then
-	System.out.println("WARN: The Process Instance (id="+$w2.getId()+") is using the same Release Path than "+$w1.getId() +" -> "+$releasePath1);
-	rulesNotificationService.insertNotification(((StatefulKnowledgeSession) kcontext.getKieRuntime()).getId(),"WARN: The Process Instance (id="+$w2.getId()+") is using the same Release Path than "+$w1.getId()+" -> "+$releasePath1);
+	
 	rulesNotificationService.insertNotification(((StatefulKnowledgeSession) kcontext.getKieRuntime()).getId(),"SEVERE: Aborting the process: "+$w2.getId());	
+       
         kcontext.getKieRuntime().abortProcessInstance($w2.getId());
 end
 
@@ -64,15 +64,14 @@ rule "More than two Fix Issues for the same Release Process Instance"
 	Number( intValue > 1) from accumulate($e: ProcessNodeTriggeredEvent(processInstance.id == $id, nodeInstance.nodeName == "Fix Issues") from entry-point "process-events", count($e))
 
   then
-	System.out.println("WARN: The Process Instance (id="+$w1.getId()+") has being rejected at least 2 times");
 	rulesNotificationService.insertNotification(((StatefulKnowledgeSession) kcontext.getKieRuntime()).getId(),"WARN: The Process Instance (id="+$w1.getId()+") has being rejected at least 2 times");
 end
 
 rule "Fix Issues Task pending for more than 30 seconds"
   when
 	$w1: WorkflowProcessInstanceImpl($id: id)
-	$onEntry: ProcessNodeTriggeredEvent(processInstance.id == $id, nodeInstance.nodeName == "Fix Issues") from entry-point "process-events"
-	$onExit: ProcessNodeLeftEvent(this after[30s] $onEntry, processInstance.id == $id, nodeInstance.nodeName == "Fix Issues") from entry-point "process-events"
+	$onEntry: ProcessNodeTriggeredEvent(processInstance.id == $id, $nid: nodeInstance.id, nodeInstance.nodeName == "Fix Issues") from entry-point "process-events"
+	$onExit: ProcessNodeLeftEvent(this after[30s] $onEntry, processInstance.id == $id,  nodeInstance.id == $nid, nodeInstance.nodeName == "Fix Issues") from entry-point "process-events"
   then
 	rulesNotificationService.insertNotification(((StatefulKnowledgeSession) kcontext.getKieRuntime()).getId(),"WARN: There is a Pending Fix Issues Task for process ("+$id+") for more than 30 seconds now");
 end
