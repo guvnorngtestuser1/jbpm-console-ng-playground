@@ -7,7 +7,7 @@
   <bpmn2:itemDefinition id="__3D32ABAD-809B-4CBE-974E-90FE4F41D257_output_customerOutputItem" structureRef="String"/>
   <bpmn2:itemDefinition id="__B1EF9068-AF11-46A0-A74B-2C56FE0CA03C_output_solutionOutputItem" structureRef="String"/>
   <bpmn2:process id="support.process" name="Support Process
-" drools:packageName="defaultPackage" drools:version="1" isExecutable="true">
+" drools:package="defaultPackage" drools:version="1" isExecutable="true">
     <bpmn2:property id="customer" itemSubjectRef="_customerItem"/>
     <bpmn2:property id="report" itemSubjectRef="_reportItem"/>
     <bpmn2:property id="solution" itemSubjectRef="_solutionItem"/>
