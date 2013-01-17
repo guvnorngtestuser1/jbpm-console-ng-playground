@@ -39,18 +39,7 @@
                             </div>
                         </div>
                     </#if>
-                </#list>
-                 <div class="form-row submit clearfix">
-                     <#if task.taskData.status = 'Reserved'>
-                         <input type="button" class="button main" name="btn_Start" value="Start" onClick="startTask(getFormValues(form));"/>
-                     </#if>
-                     <#if task.taskData.status = 'InProgress'>
-                          <input type="button" class="button main" name="btn_Save" value="Save" onClick="saveTaskState(getFormValues(form));"/>
-                          <input type="button" class="button main" name="btn_Complete" value="Complete" onClick="completeTask(getFormValues(form));"/>
-                          
-                    </#if>  
-                </div>
-      
+                </#list>      
               
         </div>
 
