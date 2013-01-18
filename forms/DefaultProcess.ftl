@@ -19,11 +19,8 @@
                         </div>
                    
                 </#list>
-                 <div class="form-row submit clearfix">
                      
-                         <input type="button" class="button main" name="btn_Start" value="Start Process" onClick="startProcess(getFormValues(form));"/>
   
-                </div>
       
               
         </div>

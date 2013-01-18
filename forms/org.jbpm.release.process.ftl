@@ -12,13 +12,6 @@
                             <input type="text" name="release_path" value=""/>
                         </div>
                    
-               <div class="form-row submit clearfix">
-                     
-                         <input type="button" class="button main" name="btn_Start" value="Start Process" onClick="startProcess(getFormValues(form));"/>
-  
-                </div>
-      
-              
         </div>
 
        
