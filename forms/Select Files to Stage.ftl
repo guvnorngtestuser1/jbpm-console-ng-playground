@@ -6,7 +6,7 @@
             <div class="form-row clearfix">
                 <label>Release</label>
                 
-                  <input type="text" disabled="true" name="release_name" value="${inputs['release_name']}" />
+                  <input type="text" disabled="true" name="release_name" value="${release_name}" />
                 
             </div>
 

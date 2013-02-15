@@ -5,13 +5,13 @@
 
             <div class="form-row clearfix">
                 <label>Report</label>
-		<textarea readonly="true" name="in_test_report">${inputs['in_test_report']}</textarea>
+		<textarea readonly="true" name="in_test_report">${in_test_report}</textarea>
 
             </div>
             <div class="form-row clearfix">
                 <label>Due Date</label>
 
-	                <input type="text" disabled="true" name="in_dueDate" id="in_dueDate" value="${inputs['in_dueDate']}"/>
+	                <input type="text" disabled="true" name="in_dueDate" id="in_dueDate" value="${in_dueDate}"/>
 
             </div>
             <div class="form-row clearfix">
