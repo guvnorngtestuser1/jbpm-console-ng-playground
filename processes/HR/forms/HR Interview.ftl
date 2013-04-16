@@ -8,7 +8,7 @@
                <h4>In order to work on this task you first need to claim it</h4>    
             </#if>  
             <#if task.taskData.status = 'Reserved'>	
-               <h4>Start the task to begin with the interview … </h4>    
+               <h4>Start the task to begin with the interview</h4>    
             </#if>  
             <#if task.taskData.status = 'InProgress'>
              <div class="form-row clearfix">
