@@ -10,7 +10,7 @@
 	    <#if task.taskData.status = 'Reserved'>	
                <h4>Start the task to begin with the interview … </h4>    
             </#if>  
-            <#if task.taskData.status = 'InProgress'>
+
              <div class="form-row clearfix">
                 <label>Name</label>
                 <input type="text" name="in.name" id="in.name" value="${in.name}"/>
@@ -25,7 +25,7 @@
                 <label>Mail</label>
                 <input type="text" name="in.mail" id="in.mail" value="${in.mail}"/>
              </div>
-
+            <#if task.taskData.status = 'InProgress'>
             <div class="form-row clearfix">
                 <label>Skills</label>
                 <input type="text" name="out.skills" id="out.skills" value=""/>

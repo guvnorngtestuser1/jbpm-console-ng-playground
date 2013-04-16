@@ -12,7 +12,7 @@
             </#if>  
             <#if task.taskData.status = 'InProgress'>
              <div class="form-row clearfix">
-                <label>Fixed Files</label>
+                <label>Name</label>
                 <input type="text" name="out.name" id="out.name" value=""/>
              </div>
 
