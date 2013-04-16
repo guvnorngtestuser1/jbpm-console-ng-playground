@@ -13,22 +13,22 @@
             <#if task.taskData.status = 'InProgress'>
              <div class="form-row clearfix">
                 <label>Name</label>
-                <input type="text" name="out.name" id="out.name" value=""/>
+                <input type="text" name="out_name" id="out_name" value=""/>
              </div>
 
 	     <div class="form-row clearfix">
                 <label>Age</label>
-                <input type="text" name="out.age" id="out.age" value=""/>
+                <input type="text" name="out_age" id="out_age" value=""/>
              </div>	
 
 	     <div class="form-row clearfix">
                 <label>Mail</label>
-                <input type="text" name="out.mail" id="out.mail" value=""/>
+                <input type="text" name="out_mail" id="out_mail" value=""/>
              </div>
 
 	     <div class="form-row clearfix">
                 <label>Score</label>
-                <select name="out.score" id="out.score">
+                <select name="out_score" id="out_score">
                   <option value="1">1 - Poor</option>
                   <option value="2">2</option>
                   <option value="3">3 - Well</option>
