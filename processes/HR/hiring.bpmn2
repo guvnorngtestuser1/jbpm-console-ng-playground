@@ -170,7 +170,7 @@
       <bpmn2:dataInputAssociation id="_cFgXn6bhEeKnMsw5KKDhyw">
         <bpmn2:targetRef>_875EEA08-FDE8-462C-B089-0E404C4D8CD3_GroupIdInput</bpmn2:targetRef>
         <bpmn2:assignment id="_cFgXoKbhEeKnMsw5KKDhyw">
-          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_cFgXoabhEeKnMsw5KKDhyw">HR</bpmn2:from>
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_cFgXoabhEeKnMsw5KKDhyw">Accounting</bpmn2:from>
           <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_cFgXoqbhEeKnMsw5KKDhyw">_875EEA08-FDE8-462C-B089-0E404C4D8CD3_GroupIdInput</bpmn2:to>
         </bpmn2:assignment>
       </bpmn2:dataInputAssociation>
