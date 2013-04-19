@@ -24,7 +24,7 @@
 	   
             <#if task.taskData.status = 'InProgress'>
             	     <div class="form-row clearfix">
-                <label>Score</label>
+                <label>Signed</label>
                 <select name="out_signed" id="out_signed">
                   <option value="true">True</option>
                   <option value="false">False</option>
