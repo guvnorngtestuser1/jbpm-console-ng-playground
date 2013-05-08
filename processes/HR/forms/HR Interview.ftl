@@ -8,13 +8,14 @@
                <h4>In order to work on this task you first need to claim it</h4>    
             </#if>  
             <#if task.taskData.status = 'Reserved'>	
-               <h4>Start the task to begin with the interview</h4>    
+               <h4>Start the task to begin with the interview</h4>   
+              <div class="form-row clearfix">
+                <label>Name</label>
+                <input type="text" name="in_name" id="in_name" value="${in_name}"/>
+             </div> 
             </#if>  
             <#if task.taskData.status = 'InProgress'>
-             <div class="form-row clearfix">
-                <label>Name</label>
-                <input type="text" name="out_name" id="out_name" value=""/>
-             </div>
+            
 
 	     <div class="form-row clearfix">
                 <label>Age</label>
