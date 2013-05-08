@@ -12,7 +12,7 @@ import org.droolsjbpm.services.impl.event.NodeInstanceLeftEvent;
 import org.kie.internal.task.api.TaskService;
 import org.jbpm.task.impl.factories.TaskFactory;
 import java.io.StringReader;
-import org.kie.internal.task.api.model.Task;
+import org.kie.task.api.model.Task;
 import org.droolsjbpm.services.api.RulesNotificationService;
 import org.kie.api.runtime.KieSession;
 
